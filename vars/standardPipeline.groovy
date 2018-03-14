@@ -11,7 +11,7 @@ def call(body) {
 
 		try {
 			stage ('Clone') {
-				checkout scm
+				git '${config.repoUrl}'
 			}
 			stage ('Build') {
 				sh "echo 'building ${config.projectName} ...'"
