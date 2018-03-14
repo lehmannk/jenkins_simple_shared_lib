@@ -1,4 +1,4 @@
-def call(Map config) {
+def call(String name) {
 
 	//def config = [:]
 	//body.resolveStrategy = Closure.DELEGATE_FIRST
@@ -11,6 +11,7 @@ def call(Map config) {
 
 		try {
 			stage ('Clone') {
+				echo 'Hallo ${name}'
 				//sh "echo 'Checking out from ${config.repoUrl} ...'"
 				//sh "git ${config.repoUrl}"
 			}
