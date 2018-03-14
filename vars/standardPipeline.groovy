@@ -15,7 +15,7 @@ def call(body) {
 				//sh "git ${config.repoUrl}"
 			}
 			stage ('Build') {
-				echo 'building ${config.projectName} ...'
+				echo 'building ${projectName} ...'
 			}
 			stage ('Tests') {
 				parallel 'static': {
