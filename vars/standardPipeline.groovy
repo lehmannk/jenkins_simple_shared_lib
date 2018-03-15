@@ -30,6 +30,13 @@ def call(body) {
 			}
 			stage ('Deploy') {
 				echo 'deploying to server ${config.serverDomain}...'
+				def deployOptions = 'no\nyes'
+				def userInput = input(
+				  id: 'userInput', message: 'Are you prepared to deploy?', parameters: [
+				  [$class: 'ChoiceParameterDefinition', choices: deployOptions, description: 'Approve/Disallow deployment', name: 'deploy-check']
+				  ]
+				)
+				echo "you selected: ${userInput}"
 			}
 		} catch (err) {
 			currentBuild.result = 'FAILED'
