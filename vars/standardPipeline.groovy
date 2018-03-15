@@ -1,9 +1,9 @@
 def call(String name) {
 
-	//def config = [:]
-	//body.resolveStrategy = Closure.DELEGATE_FIRST
-	//body.delegate = config
-	//body()
+	def config = [:]
+	body.resolveStrategy = Closure.DELEGATE_FIRST
+	body.delegate = config
+	body()
 
 	node {
 		// Clean workspace before doing anything
@@ -16,7 +16,7 @@ def call(String name) {
 				//sh "git ${config.repoUrl}"
 			}
 			stage ('Build') {
-				echo 'building ${config.projectName} ...'
+				echo 'building "${config.projectName}" ...'
 			}
 			stage ('Tests') {
 				parallel 'static': {
