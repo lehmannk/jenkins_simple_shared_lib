@@ -17,13 +17,13 @@ def call(body) {
 			stage ('Build') {
 				echo 'building ' + config.projectName + ' ...'
 				echo 'skipping tests: ' + config.skipTests
-				withMaven(maven:'M3') {
-					if (isUnix()) {
-						 sh "mvn -DskipTests clean package"
-					  } else {
-						 bat "mvn -DskipTests clean package"
-					  }
-				}
+				//withMaven(maven:'M3') {
+				//	if (isUnix()) {
+				//		 sh "mvn -DskipTests clean package"
+				//	  } else {
+				//		 bat "mvn -DskipTests clean package"
+				//	  }
+				//}
 			}
 			stage ('Tests') {
 				parallel 'static': {
