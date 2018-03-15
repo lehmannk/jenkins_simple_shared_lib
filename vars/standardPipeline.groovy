@@ -21,7 +21,7 @@ def call(body) {
 					if (isUnix()) {
 						 sh "mvn -DskipTests clean package"
 					  } else {
-						 bat(mvn -DskipTests clean package)
+						 bat "mvn -DskipTests clean package"
 					  }
 				}
 			}
