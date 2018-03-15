@@ -18,7 +18,11 @@ def call(body) {
 				echo 'building ' + config.projectName + ' ...'
 				echo 'skipping tests: ' + config.skipTests
 				withMaven(maven:'M3') {
-					mvn -DskipTests clean package
+					if (isUnix()) {
+						 sh "mvn -DskipTests clean package"
+					  } else {
+						 bat(mvn -DskipTests clean package)
+					  }
 				}
 			}
 			stage ('Tests') {
